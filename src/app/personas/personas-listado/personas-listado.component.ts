@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Persona} from '../persona';
-import {PERSONAS} from '../personas.json';
+import {PersonaService} from '../persona.service';
+import {tap} from 'rxjs/operators';
+import {log} from 'util';
+import {PersonaSencilla} from '../PersonaSencilla';
+// import {PERSONAS} from '../personas.json';
 
 @Component({
   selector: 'app-personas-listado',
@@ -9,13 +13,17 @@ import {PERSONAS} from '../personas.json';
 })
 export class PersonasListadoComponent implements OnInit {
 
-  personas: Persona[];
+  personas: PersonaSencilla[];
 
-  constructor() {
+  constructor(private service: PersonaService) {
   }
 
   ngOnInit(): void {
-    this.personas = PERSONAS;
+     this.darListado();
   }
 
-}
+  darListado(): void{
+    this.service.darListado().subscribe(listado => this.personas = listado);
+  }
+
+  }

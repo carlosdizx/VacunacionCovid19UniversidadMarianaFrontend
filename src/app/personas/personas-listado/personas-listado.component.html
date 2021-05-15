@@ -1,4 +1,4 @@
-<h2>Listado de las personas en la Universidad Mariana</h2>
+<button class="btn btn-primary btn-block">Listado de las personas en la Universidad Mariana</button>
 <table class="table table-dark table-striped">
   <thead>
   <tr>
@@ -11,9 +11,14 @@
   <tbody>
     <tr *ngFor="let persona of personas">
       <td>{{persona.documento}}</td>
-      <td>{{persona.tipo.nombre}}</td>
-      <td>{{persona.programa.nombre}}</td>
-      <td>{{persona.estado.nombre}}</td>
+      <td>{{persona.tipo}}</td>
+      <td>{{persona.programa}}</td>
+      <td *ngIf="persona.estado==='Desconocido'" class="btn-secondary">{{persona.estado}}</td>
+      <td *ngIf="persona.estado==='Contagiado'" class="btn-danger">{{persona.estado}}</td>
+      <td *ngIf="persona.estado==='Saludable'" class="btn-warning">{{persona.estado}}</td>
+      <td *ngIf="persona.estado==='Anteriormente con contagiado'" class="btn-warning">{{persona.estado}}</td>
+      <td *ngIf="persona.estado==='Primera dosis, pendiente vacunación'" class="btn-primary">{{persona.estado}}</td>
+      <td *ngIf="persona.estado==='Vacunado'" class="btn-success">{{persona.estado}}</td>
     </tr>
   </tbody>
 </table>

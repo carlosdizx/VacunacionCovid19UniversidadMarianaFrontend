@@ -44,25 +44,25 @@ export class Programa {
 }
 
 export class Persona{
-  documento: number;
+  private documento: number;
 
-  nombres: string;
+  private nombres: string;
 
-  apellidos: string;
+  private apellidos: string;
 
-  fechaNacimiento: Date;
+  private fechaNacimiento: Date;
 
-  sangre: string;
+  private sangre: string;
 
-  correo: string;
+  private correo: string;
 
-  celular: number;
+  private celular: number;
 
-  tipo: Tipo;
+  private tipo: Tipo;
 
-  eps: Eps[];
+  private eps: Eps[];
 
-  estado: Estado;
+  private estado: Estado;
 
-  programa: Programa;
+  private programa: Programa;
 }
