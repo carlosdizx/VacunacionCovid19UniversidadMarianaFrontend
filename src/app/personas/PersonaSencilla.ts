@@ -1,17 +1,18 @@
+import { Estado, Programa, Tipo} from './persona';
+
 export class PersonaSencilla{
   documento: number;
 
-  tipo: string;
+  tipo: Tipo;
 
-  programa: string;
+  estado: Estado;
 
-  estado: string;
-
+  programa: Programa;
 
   constructor() {
     this.documento = 0;
-    this.tipo = '';
-    this.programa = '';
-    this.estado = '';
+    this.tipo = new Tipo();
+    this.programa = new Programa();
+    this.estado = new Estado();
   }
 }

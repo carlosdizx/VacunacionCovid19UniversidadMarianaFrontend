@@ -11,14 +11,14 @@
   <tbody>
     <tr *ngFor="let persona of personas">
       <td>{{persona.documento}}</td>
-      <td>{{persona.tipo}}</td>
-      <td>{{persona.programa}}</td>
-      <td *ngIf="persona.estado==='Desconocido'" class="btn-secondary">{{persona.estado}}</td>
-      <td *ngIf="persona.estado==='Contagiado'" class="btn-danger">{{persona.estado}}</td>
-      <td *ngIf="persona.estado==='Saludable'" class="btn-warning">{{persona.estado}}</td>
-      <td *ngIf="persona.estado==='Anteriormente con contagiado'" class="btn-warning">{{persona.estado}}</td>
-      <td *ngIf="persona.estado==='Primera dosis, pendiente vacunación'" class="btn-primary">{{persona.estado}}</td>
-      <td *ngIf="persona.estado==='Vacunado'" class="btn-success">{{persona.estado}}</td>
+      <td>{{persona.tipo.nombre}}</td>
+      <td>{{persona.programa.nombre}}</td>
+      <td *ngIf="persona.estado.id===1" class="btn-secondary">{{persona.estado.nombre}}</td>
+      <td *ngIf="persona.estado.id===2" class="btn-danger">{{persona.estado.nombre}}</td>
+      <td *ngIf="persona.estado.id===3" class="btn-warning">{{persona.estado.nombre}}</td>
+      <td *ngIf="persona.estado.id===4" class="btn-warning">{{persona.estado.nombre}}</td>
+      <td *ngIf="persona.estado.id===5" class="btn-primary">{{persona.estado.nombre}}</td>
+      <td *ngIf="persona.estado.id===6" class="btn-success">{{persona.estado.nombre}}</td>
     </tr>
   </tbody>
 </table>

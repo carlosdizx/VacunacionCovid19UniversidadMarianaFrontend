@@ -36,33 +36,32 @@ export class Programa {
 
   nombre: string;
 
-
-    constructor(id: number, nombre: string) {
-    this.id = id;
-    this.nombre = nombre;
+    constructor() {
+    this.id = 0;
+    this.nombre = '';
   }
 }
 
 export class Persona{
-  private documento: number;
+  documento: number;
 
-  private nombres: string;
+  nombres: string;
 
-  private apellidos: string;
+  apellidos: string;
 
-  private fechaNacimiento: Date;
+  fechaNacimiento: Date;
 
-  private sangre: string;
+  sangre: string;
 
-  private correo: string;
+  correo: string;
 
-  private celular: number;
+  celular: number;
 
-  private tipo: Tipo;
+  tipo: Tipo;
 
-  private eps: Eps[];
+  eps: Eps[];
 
-  private estado: Estado;
+  estado: Estado;
 
-  private programa: Programa;
+  programa: Programa;
 }
