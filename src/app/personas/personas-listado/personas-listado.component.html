@@ -1,0 +1,19 @@
+<h2>Listado de las personas en la Universidad Mariana</h2>
+<table class="table table-dark table-striped">
+  <thead>
+  <tr>
+    <th>Documento</th>
+    <th>Tipo/Rol</th>
+    <th>Programa acedemico</th>
+    <th>Estado</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let persona of personas">
+      <td>{{persona.documento}}</td>
+      <td>{{persona.tipo.nombre}}</td>
+      <td>{{persona.programa.nombre}}</td>
+      <td>{{persona.estado.nombre}}</td>
+    </tr>
+  </tbody>
+</table>

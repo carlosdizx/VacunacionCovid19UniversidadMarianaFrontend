@@ -36,9 +36,10 @@ export class Programa {
 
   nombre: string;
 
-  constructor() {
-    this.id = 0;
-    this.nombre = '';
+
+    constructor(id: number, nombre: string) {
+    this.id = id;
+    this.nombre = nombre;
   }
 }
 
@@ -59,7 +60,7 @@ export class Persona{
 
   tipo: Tipo;
 
-  eps: Eps;
+  eps: Eps[];
 
   estado: Estado;
 
