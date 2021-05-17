@@ -1,9 +1,10 @@
 .form-control{
-  margin-top: 10px;
-  font-size: 15px;
+  margin-top: 50px;
+  font-size: 17px;
 }
 .col-form-label{
   font-size: 20px;
+  margin-top: 50px;
 }
 .card{
   position: absolute;
