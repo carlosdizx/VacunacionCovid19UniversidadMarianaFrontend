@@ -1,16 +1,16 @@
 <button class="btn btn-dark btn-block"><b>{{titulo}}</b></button>
 <div class="form-group row">
   <div class="col-sm-3">
-    <button (click)="cambiarTitulo(1)" class="btn btn-primary btn-block" [routerLink]="['/listado/tipo/',1]">Estudiantes</button>
+    <button (click)="cambiarTitulo(1)" class="btn btn-primary btn-block" [routerLink]="['/listado/tipo/',1]">Estudiantes ({{estudiantes.length}})</button>
   </div>
   <div class="col-sm-3">
-    <button (click)="cambiarTitulo(2)" class="btn btn-success btn-block"  [routerLink]="['/listado/tipo/',2]">Docentes</button>
+    <button (click)="cambiarTitulo(2)" class="btn btn-success btn-block"  [routerLink]="['/listado/tipo/',2]">Docentes ({{docentes.length}})</button>
   </div>
   <div class="col-sm-3">
-    <button (click)="cambiarTitulo(3)" class="btn btn-warning btn-block" [routerLink]="['/listado/tipo/',3]">Administrativos</button>
+    <button (click)="cambiarTitulo(3)" class="btn btn-warning btn-block" [routerLink]="['/listado/tipo/',3]">Administrativos ({{administrativos.length}})</button>
   </div>
   <div class="col-sm-3">
-    <button (click)="cambiarTitulo(4)" class="btn btn-danger btn-block" [routerLink]="['/listado/tipo/',4]">Directivos</button>
+    <button (click)="cambiarTitulo(4)" class="btn btn-danger btn-block" [routerLink]="['/listado/tipo/',4]">Directivos ({{directivos.length}})</button>
   </div>
 </div>
 <table class="table table-dark table-striped">
