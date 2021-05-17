@@ -9,12 +9,14 @@ import { FormPersonaComponent } from './personas/form-persona/form-persona.compo
 import {FormsModule} from '@angular/forms';
 import {PersonaService} from './personas/persona.service';
 import { ListadoTipoComponent } from './personas/listado-tipo/listado-tipo.component';
+import { ListadoSituacionComponent } from './personas/listado-situacion/listado-situacion.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'listadoPersonas', component: PersonasListadoComponent },
   { path: 'personas/:id', component: FormPersonaComponent },
   { path: 'listado/tipo/:id', component: ListadoTipoComponent },
+  { path: 'listado/estado/:id', component: ListadoSituacionComponent },
 ];
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ const routes: Routes = [
     PersonasListadoComponent,
     FormPersonaComponent,
     ListadoTipoComponent,
+    ListadoSituacionComponent,
   ],
   imports: [
     BrowserModule,

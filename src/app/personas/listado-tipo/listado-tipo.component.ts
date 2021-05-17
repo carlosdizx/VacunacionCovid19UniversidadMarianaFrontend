@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-listado-tipo',
   templateUrl: './listado-tipo.component.html',
-  styleUrls: ['./listado-tipo.component.css']
+  styleUrls: []
 })
 export class ListadoTipoComponent implements OnInit {
 
@@ -36,7 +36,6 @@ export class ListadoTipoComponent implements OnInit {
       .subscribe((listado) => {
         this.personas = listado;
         for ( const persona of this.personas){
-          console.log(persona.tipo.id);
           if (persona.tipo.id === 1){
             this.estudiantes.push(persona);
           }

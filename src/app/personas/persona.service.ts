@@ -21,6 +21,11 @@ export class PersonaService {
       .get<PersonaSencilla[]>(`${this.urlEndpoint}/all`);
   }
 
+  getListado2(): Observable<PersonaSencilla[]>{
+    return this.http
+      .get<PersonaSencilla[]>(`${this.urlEndpoint}/2all`);
+  }
+
   getPersona(documento: number): Observable<any> {
     return this.http.get<Persona>(`${this.urlEndpoint}/${documento}`);
   }
