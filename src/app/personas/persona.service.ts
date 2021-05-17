@@ -34,4 +34,8 @@ export class PersonaService {
     return this.http.get<PersonaSencilla[]>(`${this.urlEndpoint}/tipos/${id}`)
       ;
   }
+
+  getPersoonasPosibleAsistencia(): Observable<any>{
+    return this.http.get<PersonaSencilla[]>(`${this.urlEndpoint}/posibles`);
+  }
 }
