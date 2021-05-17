@@ -16,7 +16,7 @@ export class PersonaService {
 
   constructor(private http: HttpClient, private router: Router) {  }
 
-  darListado(): Observable<PersonaSencilla[]>{
+  getListado(): Observable<PersonaSencilla[]>{
     return this.http
       .get<PersonaSencilla[]>(`${this.urlEndpoint}/all`);
   }

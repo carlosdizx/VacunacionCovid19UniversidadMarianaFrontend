@@ -21,16 +21,56 @@
     <th>Estado</th>
   </tr>
   </thead>
-  <tbody>
-  <tr *ngFor="let persona of personas">
-    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',persona.documento]">{{persona.documento}}</button></td>
-    <td>{{persona.programa.nombre}}</td>
-    <td *ngIf="persona.estado.id===1" class="btn-light">{{persona.estado.nombre}}</td>
-    <td *ngIf="persona.estado.id===2" class="btn-danger">{{persona.estado.nombre}}</td>
-    <td *ngIf="persona.estado.id===3" class="btn-warning">{{persona.estado.nombre}}</td>
-    <td *ngIf="persona.estado.id===4" class="btn-warning">{{persona.estado.nombre}}</td>
-    <td *ngIf="persona.estado.id===5" class="btn-primary">{{persona.estado.nombre}}</td>
-    <td *ngIf="persona.estado.id===6" class="btn-success">{{persona.estado.nombre}}</td>
+  <!-- estudiantes ( indice = 1 ) -->
+  <tbody *ngIf="indice===1">
+  <tr *ngFor="let estudiante of estudiantes">
+    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',estudiante.documento]">{{estudiante.documento}}</button></td>
+    <td>{{estudiante.programa.nombre}}</td>
+    <td *ngIf="estudiante.estado.id===1" class="btn-light">{{estudiante.estado.nombre}}</td>
+    <td *ngIf="estudiante.estado.id===2" class="btn-danger">{{estudiante.estado.nombre}}</td>
+    <td *ngIf="estudiante.estado.id===3" class="btn-warning">{{estudiante.estado.nombre}}</td>
+    <td *ngIf="estudiante.estado.id===4" class="btn-warning">{{estudiante.estado.nombre}}</td>
+    <td *ngIf="estudiante.estado.id===5" class="btn-primary">{{estudiante.estado.nombre}}</td>
+    <td *ngIf="estudiante.estado.id===6" class="btn-success">{{estudiante.estado.nombre}}</td>
+  </tr>
+  </tbody>
+  <!-- docentes ( indice = 2 ) -->
+  <tbody *ngIf="indice===2">
+  <tr *ngFor="let docentes of docentes">
+    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',docentes.documento]">{{docentes.documento}}</button></td>
+    <td>{{docentes.programa.nombre}}</td>
+    <td *ngIf="docentes.estado.id===1" class="btn-light">{{docentes.estado.nombre}}</td>
+    <td *ngIf="docentes.estado.id===2" class="btn-danger">{{docentes.estado.nombre}}</td>
+    <td *ngIf="docentes.estado.id===3" class="btn-warning">{{docentes.estado.nombre}}</td>
+    <td *ngIf="docentes.estado.id===4" class="btn-warning">{{docentes.estado.nombre}}</td>
+    <td *ngIf="docentes.estado.id===5" class="btn-primary">{{docentes.estado.nombre}}</td>
+    <td *ngIf="docentes.estado.id===6" class="btn-success">{{docentes.estado.nombre}}</td>
+  </tr>
+  </tbody>
+  <!-- administrativos ( indice = 3 ) -->
+  <tbody *ngIf="indice===3">
+  <tr *ngFor="let administrativo of administrativos">
+    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',administrativo.documento]">{{administrativo.documento}}</button></td>
+    <td>{{administrativo.programa.nombre}}</td>
+    <td *ngIf="administrativo.estado.id===1" class="btn-light">{{administrativo.estado.nombre}}</td>
+    <td *ngIf="administrativo.estado.id===2" class="btn-danger">{{administrativo.estado.nombre}}</td>
+    <td *ngIf="administrativo.estado.id===3" class="btn-warning">{{administrativo.estado.nombre}}</td>
+    <td *ngIf="administrativo.estado.id===4" class="btn-warning">{{administrativo.estado.nombre}}</td>
+    <td *ngIf="administrativo.estado.id===5" class="btn-primary">{{administrativo.estado.nombre}}</td>
+    <td *ngIf="administrativo.estado.id===6" class="btn-success">{{administrativo.estado.nombre}}</td>
+  </tr>
+  </tbody>
+  <!-- directivos ( indice = 4 ) -->
+  <tbody *ngIf="indice===4">
+  <tr *ngFor="let directivo of directivos">
+    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',directivo.documento]">{{directivo.documento}}</button></td>
+    <td>{{directivo.programa.nombre}}</td>
+    <td *ngIf="directivo.estado.id===1" class="btn-light">{{directivo.estado.nombre}}</td>
+    <td *ngIf="directivo.estado.id===2" class="btn-danger">{{directivo.estado.nombre}}</td>
+    <td *ngIf="directivo.estado.id===3" class="btn-warning">{{directivo.estado.nombre}}</td>
+    <td *ngIf="directivo.estado.id===4" class="btn-warning">{{directivo.estado.nombre}}</td>
+    <td *ngIf="directivo.estado.id===5" class="btn-primary">{{directivo.estado.nombre}}</td>
+    <td *ngIf="directivo.estado.id===6" class="btn-success">{{directivo.estado.nombre}}</td>
   </tr>
   </tbody>
 </table>

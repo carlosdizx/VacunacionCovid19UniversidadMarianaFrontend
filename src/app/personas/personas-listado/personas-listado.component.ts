@@ -25,7 +25,7 @@ export class PersonasListadoComponent implements OnInit {
   }
 
   darListado(): void{
-    this.service.darListado().subscribe(listado => this.personas = listado);
+    this.service.getListado().subscribe(listado => this.personas = listado);
   }
 
   cambiarEstado(): void{
