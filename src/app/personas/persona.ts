@@ -64,4 +64,22 @@ export class Persona{
   estado: Estado;
 
   programa: Programa;
+
+  constructor() {
+    this.documento = 0;
+    this.nombres = '';
+    this.apellidos = '';
+    this.fechaNacimiento = new Date();
+    this.sangre = '';
+    this.correo = '';
+    this.celular = 0;
+    this.tipo = new Tipo();
+    this.eps = [];
+    this.estado = new Estado();
+    this.programa = new Programa();
+  }
+
+  getDocuemento(): number{
+    return this.documento;
+  }
 }

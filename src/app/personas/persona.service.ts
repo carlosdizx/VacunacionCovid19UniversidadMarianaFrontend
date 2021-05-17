@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Persona} from './persona';
-import {map, tap} from 'rxjs/operators';
-import {PersonaSencilla} from './PersonaSencilla';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +13,14 @@ export class PersonaService {
 
   private urlEndpoint = 'http://localhost:8080/personas';
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient, private router: Router) {  }
 
-  // resp[0].forEach(persona=>{persona.forEach(propiedad => console.log(propiedad) })
   darListado(): Observable<any>{
     return this.http
       .get(`${this.urlEndpoint}/all`);
-    /*
-     * .pipe(
-     tap((response) => {
-          (response.content as PersonaSencilla[]).forEach((persona) => {
-            console.log(persona.documento);
-          });
-        })
-        * );
-     */
+  }
+
+  getPersona(documento: number): Observable<any> {
+    return this.http.get<Persona>(`${this.urlEndpoint}/${documento}`);
   }
 }

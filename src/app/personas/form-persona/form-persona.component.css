@@ -1,0 +1,11 @@
+.form-control{
+  margin-top: 10px;
+  font-size: 15px;
+}
+.col-form-label{
+  font-size: 20px;
+}
+.card{
+  position: absolute;
+  height: 100%;
+}

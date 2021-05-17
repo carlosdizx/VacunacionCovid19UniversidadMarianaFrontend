@@ -15,6 +15,8 @@ export class PersonasListadoComponent implements OnInit {
 
   personas: PersonaSencilla[];
 
+  mostrar = true;
+
   constructor(private service: PersonaService) {
   }
 
@@ -24,6 +26,10 @@ export class PersonasListadoComponent implements OnInit {
 
   darListado(): void{
     this.service.darListado().subscribe(listado => this.personas = listado);
+  }
+
+  cambiarEstado(): void{
+    this.mostrar = !this.mostrar;
   }
 
   }

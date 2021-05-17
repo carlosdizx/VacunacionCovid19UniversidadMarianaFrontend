@@ -1,5 +1,5 @@
-<button class="btn btn-primary btn-block">Listado de las personas en la Universidad Mariana</button>
-<table class="table table-dark table-striped">
+<button (click)="cambiarEstado()" class="btn btn-primary btn-block">Listado de las personas en la Universidad Mariana {{mostrar?'(Ocultar)':'(Mostrar)'}}</button>
+<table *ngIf="mostrar" class="table table-dark table-striped">
   <thead>
   <tr>
     <th>Documento</th>
@@ -10,10 +10,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let persona of personas">
-      <td>{{persona.documento}}</td>
+      <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',persona.documento]">{{persona.documento}}</button></td>
       <td>{{persona.tipo.nombre}}</td>
       <td>{{persona.programa.nombre}}</td>
-      <td *ngIf="persona.estado.id===1" class="btn-secondary">{{persona.estado.nombre}}</td>
+      <td *ngIf="persona.estado.id===1" class="btn-light">{{persona.estado.nombre}}</td>
       <td *ngIf="persona.estado.id===2" class="btn-danger">{{persona.estado.nombre}}</td>
       <td *ngIf="persona.estado.id===3" class="btn-warning">{{persona.estado.nombre}}</td>
       <td *ngIf="persona.estado.id===4" class="btn-warning">{{persona.estado.nombre}}</td>

@@ -1,0 +1,165 @@
+<div class="card bg-dark d-flex text-white text-monospace">
+  <div class="card-header btn-outline-warning"><h1>Detalles de la persona</h1></div>
+  <div class="card-body">
+    <div class="form-group row">
+      <label for="documento" class="col-form-label btn-outline-warning col-sm-2">Documento</label>
+      <div class="col-sm-3">
+        <input
+          class="form-control btn-outline-warning"
+          id="documento"
+          type="text"
+          [(ngModel)]="persona.documento"
+          name="documento"
+          #documento="ngModel"
+          disabled
+        />
+      </div>
+      <h1 class="col-sm-7"></h1>
+      <label for="nombres" class="col-form-label btn-outline-warning col-sm-2">Nombres</label>
+      <div class="col-sm-4">
+        <input
+          class="form-control btn-outline-warning"
+          id="nombres"
+          type="text"
+          [(ngModel)]="persona.nombres"
+          name="nombres"
+          #documento="ngModel"
+          disabled
+        />
+      </div>
+      <label for="apellidos" class="col-form-label btn-outline-warning col-sm-2">Apellidos</label>
+      <div class="col-sm-4">
+        <input
+          class="form-control btn-outline-warning"
+          id="apellidos"
+          type="text"
+          [(ngModel)]="persona.apellidos"
+          name="apellidos"
+          #documento="ngModel"
+          disabled
+        />
+      </div>
+      <label for="fechaNacimiento" class="col-form-label btn-outline-warning col-sm-2">Fecha de nacimiento</label>
+      <div class="col-sm-3">
+        <input
+          class="form-control btn-outline-warning"
+          id="fechaNacimiento"
+          type="text"
+          name="fechaNacimiento"
+          value="{{persona.fechaNacimiento | date: 'fullDate' }}"
+          disabled
+        />
+      </div>
+      <label for="sangre" class="col-form-label btn-outline-warning col-sm-1">Sangre</label>
+      <div class="col-sm-1">
+        <input
+          class="form-control btn-outline-warning"
+          id="sangre"
+          [(ngModel)]="persona.sangre"
+          name="sangre"
+          #sangre="ngModel"
+          type="text"
+          disabled
+        />
+      </div>
+      <label for="celular" class="col-form-label btn-outline-warning col-sm-2">Celular</label>
+      <div class="col-sm-3">
+        <input
+          class="form-control btn-outline-warning"
+          id="celular"
+          [(ngModel)]="persona.celular"
+          name="celular"
+          #sangre="ngModel"
+          type="text"
+          disabled
+        />
+      </div>
+      <label for="correo" class="col-form-label btn-outline-warning col-sm-2">Correo</label>
+      <div class="col-sm-4">
+        <input
+          class="form-control btn-outline-warning"
+          id="correo"
+          [(ngModel)]="persona.correo"
+          name="correo"
+          #coreeo="ngModel"
+          type="email"
+          disabled
+        />
+      </div>
+      <label for="programa" class="col-form-label btn-outline-warning col-sm-2">Programa</label>
+      <div class="col-sm-4">
+        <input
+          class="form-control btn-outline-warning"
+          id="programa"
+          [(ngModel)]="persona.programa.nombre"
+          name="programa"
+          #programa="ngModel"
+          type="text"
+          disabled
+        />
+      </div>
+      <label for="tipo" class="col-form-label btn-outline-warning col-sm-2">Tipo/Cargo/Rol</label>
+      <div class="col-sm-4">
+        <input
+          class="form-control btn-outline-warning"
+          id="tipo"
+          [(ngModel)]="persona.tipo.nombre"
+          name="tipo"
+          #sangre="ngModel"
+          type="text"
+          disabled
+          value="{{persona.estado.nombre}}"
+        />
+      </div>
+      <label class="col-form-label btn-outline-light col-sm-2">Situacion</label>
+      <div class="col-sm-4">
+        <input
+          *ngIf="persona.estado.id===1"
+          class="form-control btn-lightk"
+          name="estado"
+          type="text"
+          disabled
+          value="{{persona.estado.nombre}}"
+        />
+        <input
+          *ngIf="persona.estado.id===2"
+          class="form-control btn-danger"
+          name="estado"
+          type="text"
+          disabled
+          value="{{persona.estado.nombre}}"
+        />
+        <input
+          *ngIf="persona.estado.id===3 || persona.estado.id===4"
+          class="form-control btn-warning"
+          name="estado"
+          type="text"
+          disabled
+          value="{{persona.estado.nombre}}"
+        />
+        <input
+          *ngIf="persona.estado.id===5"
+          class="form-control btn-primary"
+          name="estado"
+          type="text"
+          disabled
+          value="{{persona.estado.nombre}}"
+        />
+        <input
+          *ngIf="persona.estado.id===6"
+          class="form-control btn-success"
+          name="estado"
+          type="text"
+          disabled
+          value="{{persona.estado.nombre}}"
+        />
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <h4 class="btn-outline-warning">Listado de Eps</h4>
+      <ol>
+        <li class="btn-outline-warning" *ngFor="let e of listadoEps">{{ e.nombre }}</li>
+      </ol>
+    </div>
+  </div>
+</div>
