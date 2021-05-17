@@ -30,7 +30,7 @@ export class FormPersonaComponent implements OnInit {
           .getPersona(documento)
           .subscribe((persona) => {
             this.persona = persona.Persona;
-            this.listadoEps = persona.Persona.epss;
+            this.listadoEps = persona.Persona.eps;
           });
       }
     });

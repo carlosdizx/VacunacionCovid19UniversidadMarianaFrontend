@@ -1,5 +1,6 @@
-<div class="card bg-dark d-flex text-white text-monospace">
-  <div class="card-header btn-outline-warning"><h1>Detalles de la persona</h1></div>
+<h1 *ngIf="persona.documento===0" class="btn-danger btn-block"><b>La persona que se busca no existe</b></h1>
+<div *ngIf="persona.documento!==0" class="card bg-dark d-flex">
+  <div class="card-header btn-outline-warning"><h1>Detalles de la persona ({{persona.tipo.nombre}})</h1></div>
   <div class="card-body">
     <div class="form-group row">
       <label for="documento" class="col-form-label btn-outline-warning col-sm-2">Documento</label>
@@ -154,12 +155,12 @@
           value="{{persona.estado.nombre}}"
         />
       </div>
-    </div>
-    <div class="col-sm-4">
-      <h4 class="btn-outline-warning">Listado de Eps</h4>
-      <ol>
-        <li class="btn-outline-warning" *ngFor="let e of listadoEps">{{ e.nombre }}</li>
-      </ol>
+      <div class="col-sm-4">
+        <h4 class="btn-outline-warning">Listado de Eps</h4>
+        <ol>
+          <li class="btn-outline-warning" *ngFor="let e of listadoEps">{{ e.nombre }}</li>
+        </ol>
+      </div>
     </div>
   </div>
 </div>

@@ -8,11 +8,13 @@ import {RouterModule, Routes} from '@angular/router';
 import { FormPersonaComponent } from './personas/form-persona/form-persona.component';
 import {FormsModule} from '@angular/forms';
 import {PersonaService} from './personas/persona.service';
+import { ListadoTipoComponent } from './personas/listado-tipo/listado-tipo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'listadoPersonas', component: PersonasListadoComponent },
   { path: 'personas/:id', component: FormPersonaComponent },
+  { path: 'listado/tipo/:id', component: ListadoTipoComponent },
 ];
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ const routes: Routes = [
     HeaderComponent,
     PersonasListadoComponent,
     FormPersonaComponent,
+    ListadoTipoComponent,
   ],
   imports: [
     BrowserModule,
