@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'listado/estado/:id', component: ListadoSituacionComponent },
   { path: 'listado/posibles', component: ListadoPosibleAsistenciaComponent },
   { path: 'listado/posiblesFacultades', component: ListadoPosiblesFacultadesComponent },
+  { path: 'graficas/1', component: UnoComponent },
 ];
 @NgModule({
   declarations: [
