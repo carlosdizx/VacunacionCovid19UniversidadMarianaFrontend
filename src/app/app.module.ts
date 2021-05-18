@@ -11,6 +11,7 @@ import {PersonaService} from './personas/persona.service';
 import { ListadoTipoComponent } from './personas/listado-tipo/listado-tipo.component';
 import { ListadoSituacionComponent } from './personas/listado-situacion/listado-situacion.component';
 import { ListadoPosibleAsistenciaComponent } from './personas/listado-posible-asistencia/listado-posible-asistencia.component';
+import { ListadoPosiblesFacultadesComponent } from './personas/listado-posibles-facultades/listado-posibles-facultades.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'listado/tipo/:id', component: ListadoTipoComponent },
   { path: 'listado/estado/:id', component: ListadoSituacionComponent },
   { path: 'listado/posibles', component: ListadoPosibleAsistenciaComponent },
+  { path: 'listado/posiblesFacultades', component: ListadoPosiblesFacultadesComponent },
 ];
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ const routes: Routes = [
     ListadoTipoComponent,
     ListadoSituacionComponent,
     ListadoPosibleAsistenciaComponent,
+    ListadoPosiblesFacultadesComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import {Observable} from 'rxjs';
 import {Persona} from './persona';
 import {Router} from '@angular/router';
 import {PersonaSencilla} from './PersonaSencilla';
+import {ResumenFacultad} from './resumenFacultad';
+import {tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +39,21 @@ export class PersonaService {
 
   getPersoonasPosibleAsistencia(): Observable<any>{
     return this.http.get<PersonaSencilla[]>(`${this.urlEndpoint}/posibles`);
+  }
+
+  getPosiblesFacultades(): Observable<any>{
+    return this.http.get<PersonaSencilla[]>(`${this.urlEndpoint}/posibles`);
+  }
+
+  getByFacultadPersonasPosibles(): Observable<any>{
+    let total = 0;
+    return this.http.get<ResumenFacultad[]>(`${this.urlEndpoint}/posiblesFacultades`).pipe(
+      tap(respuesta => {
+        respuesta.Lista.forEach(resumen => {
+          total = total + resumen.cantidad;
+        });
+        console.log('total: ' + total);
+      })
+    );
   }
 }

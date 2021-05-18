@@ -1,0 +1,24 @@
+<button class="btn btn-primary btn-block">Conteo de personas que podrian volver a la Universidad categorizado por facultad, programa y cargo ({{total}})</button>
+<table class="table table-dark table-striped text-monospace">
+  <thead>
+  <tr>
+    <th>Cantidad</th>
+    <th>Rol/cargo</th>
+    <th>Programa acedemico</th>
+    <th>Facultad</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let resumen of listado">
+    <td>{{resumen.cantidad}}</td>
+    <td>{{resumen.tipo}}</td>
+    <td>{{resumen.programa}}</td>
+    <td *ngIf="resumen.facultad==='Administrativa'" class="btn-warning">{{resumen.facultad}}</td>
+    <td *ngIf="resumen.facultad==='Ciencias contables, Economicas y financieras'" class="btn-primary">{{resumen.facultad}}</td>
+    <td *ngIf="resumen.facultad==='Educación'" class="btn-light">{{resumen.facultad}}</td>
+    <td *ngIf="resumen.facultad==='Ingeniería'" class="btn-danger">{{resumen.facultad}}</td>
+    <td *ngIf="resumen.facultad==='Humanidades y Ciencias y Sociales'" class="btn-secondary">{{resumen.facultad}}</td>
+    <td *ngIf="resumen.facultad==='Ciencias de la Salud'" class="btn-success">{{resumen.facultad}}</td>
+  </tr>
+  </tbody>
+</table>
