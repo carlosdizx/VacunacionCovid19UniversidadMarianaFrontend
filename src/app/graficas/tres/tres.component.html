@@ -1,0 +1,11 @@
+<button class="btn btn-primary btn-block">Posibles asistentes categorizados por facultades ({{titulo}})</button>
+<div class="container bg-dark disabled" style="display: block;">
+  <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+  </canvas>
+</div>

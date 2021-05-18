@@ -19,4 +19,8 @@ export class GraficasService {
   getGraficaDos(): Observable<any> {
     return this.http.get(`${this.urlEndpoint}/2`);
   }
+
+  getGraficaTres(): Observable<any> {
+    return this.http.get(`${this.urlEndpoint}/3`);
+  }
 }
