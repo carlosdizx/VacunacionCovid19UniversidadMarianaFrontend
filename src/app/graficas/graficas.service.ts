@@ -23,4 +23,8 @@ export class GraficasService {
   getGraficaTres(): Observable<any> {
     return this.http.get(`${this.urlEndpoint}/3`);
   }
+
+  getGraficaCuatro(): Observable<any> {
+    return this.http.get(`${this.urlEndpoint}/4`);
+  }
 }

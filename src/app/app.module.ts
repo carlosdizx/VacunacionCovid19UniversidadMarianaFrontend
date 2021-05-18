@@ -16,6 +16,7 @@ import { UnoComponent } from './graficas/uno/uno.component';
 import {ChartsModule} from 'ng2-charts';
 import { DosComponent } from './graficas/dos/dos.component';
 import { TresComponent } from './graficas/tres/tres.component';
+import { CuatroComponent } from './graficas/cuatro/cuatro.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'graficas/1', component: UnoComponent },
   { path: 'graficas/2', component: DosComponent },
   { path: 'graficas/3', component: TresComponent },
+  { path: 'graficas/4', component: CuatroComponent },
 ];
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ const routes: Routes = [
     UnoComponent,
     DosComponent,
     TresComponent,
+    CuatroComponent,
   ],
   imports: [
     BrowserModule,

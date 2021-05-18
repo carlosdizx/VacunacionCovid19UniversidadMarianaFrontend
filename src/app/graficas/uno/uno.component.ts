@@ -44,26 +44,6 @@ export class UnoComponent implements OnInit {
       this.infoUno.push({label: 'Posibles', data: [this.graficoUno.Posibles],backgroundColor: 'WHITE', hoverBackgroundColor: 'WHITE'});
       this.infoUno.push({label: '', data: [0],backgroundColor: '', hoverBackgroundColor: ''},);
       console.log(this.infoUno);
-      /**
-      this.barChartData = [{ data: [
-        this.graficoUno.Administrativos,
-        this.graficoUno.Estudiantes,
-        this.graficoUno.Docentes,
-        this.graficoUno.Directivos,
-        this.graficoUno.Posibles,
-        this.graficoUno.Total,
-        ], label: 'Personas por tipo'}
-       */
-
-      /**
-       this.barChartData = [this.infoUno[0]]
-       this.barChartData.push(this.infoUno[1]);
-       this.barChartData.push(this.infoUno[2]);
-       this.barChartData.push(this.infoUno[3]);
-       this.barChartData.push(this.infoUno[4]);
-       */
-
-      // this.barChartData.push({data:[1],label:'xxx',backgroundColor:'RED',hoverBackgroundColor:'RED'})
       this.infoUno.forEach(dato => this.barChartData.push(dato));
       this.barChartData.splice(0,1)
       console.log(this.barChartData);
