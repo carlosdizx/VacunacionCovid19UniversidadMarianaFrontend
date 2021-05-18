@@ -12,6 +12,8 @@ import { ListadoTipoComponent } from './personas/listado-tipo/listado-tipo.compo
 import { ListadoSituacionComponent } from './personas/listado-situacion/listado-situacion.component';
 import { ListadoPosibleAsistenciaComponent } from './personas/listado-posible-asistencia/listado-posible-asistencia.component';
 import { ListadoPosiblesFacultadesComponent } from './personas/listado-posibles-facultades/listado-posibles-facultades.component';
+import { UnoComponent } from './graficas/uno/uno.component';
+import {ChartsModule} from 'ng2-charts';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -32,12 +34,14 @@ const routes: Routes = [
     ListadoSituacionComponent,
     ListadoPosibleAsistenciaComponent,
     ListadoPosiblesFacultadesComponent,
+    UnoComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes),
+    ChartsModule
   ],
   providers: [PersonaService],
   bootstrap: [AppComponent]
