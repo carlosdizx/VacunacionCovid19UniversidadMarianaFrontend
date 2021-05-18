@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import {Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip} from 'ng2-charts';
 import {GraficasService} from '../graficas.service';
-import {GraficaUno} from '../graficaUno';
+import {GraficaUno, InfoUno} from '../graficaUno';
 
 @Component({
   selector: 'app-uno',
@@ -13,11 +13,13 @@ export class UnoComponent implements OnInit {
 
   graficoUno: GraficaUno;
 
+  infoUno: InfoUno[] =[];
+
   barChartOptions: ChartOptions = {
     responsive: true,
   };
 
-  public barChartLabels: Label[] = ['Administrativos', 'Estudiantes', 'Docentes', 'Directivos', 'Posibles', 'Total'];
+  public barChartLabels: Label[] = ['Tipo, cargos rol'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
@@ -35,16 +37,36 @@ export class UnoComponent implements OnInit {
   getGraficaUno(): void {
     this.service.getGraficaUno().subscribe(respuesta => {
       this.graficoUno = respuesta;
-      this.barChartData.push({ data: [
+      this.infoUno.push({label: 'Administrativos', data: [this.graficoUno.Administrativos],backgroundColor: 'RED', hoverBackgroundColor: 'RED'});
+      this.infoUno.push({label: 'Estudiantes', data: [this.graficoUno.Estudiantes],backgroundColor: 'GREEN', hoverBackgroundColor: 'GREEN'});
+      this.infoUno.push({label: 'Docentes', data: [this.graficoUno.Docentes],backgroundColor: 'BLUE', hoverBackgroundColor: 'BLUE'});
+      this.infoUno.push({label: 'Directivos', data: [this.graficoUno.Directivos],backgroundColor: 'ORANGE', hoverBackgroundColor: 'ORANGE'});
+      this.infoUno.push({label: 'Posibles', data: [this.graficoUno.Posibles],backgroundColor: 'WHITE', hoverBackgroundColor: 'WHITE'});
+      this.infoUno.push({label: '', data: [0],backgroundColor: '', hoverBackgroundColor: ''},);
+      console.log(this.infoUno);
+      /**
+      this.barChartData = [{ data: [
         this.graficoUno.Administrativos,
         this.graficoUno.Estudiantes,
         this.graficoUno.Docentes,
         this.graficoUno.Directivos,
         this.graficoUno.Posibles,
         this.graficoUno.Total,
-        ], label: 'Personas por tipo' });
-      console.log(this.barChartLabels);
-      this.barChartData.splice(0, 1);
+        ], label: 'Personas por tipo'}
+       */
+
+      /**
+       this.barChartData = [this.infoUno[0]]
+       this.barChartData.push(this.infoUno[1]);
+       this.barChartData.push(this.infoUno[2]);
+       this.barChartData.push(this.infoUno[3]);
+       this.barChartData.push(this.infoUno[4]);
+       */
+
+      // this.barChartData.push({data:[1],label:'xxx',backgroundColor:'RED',hoverBackgroundColor:'RED'})
+      this.infoUno.forEach(dato => this.barChartData.push(dato));
+      this.barChartData.splice(0,1)
+      console.log(this.barChartData);
     });
   }
 }

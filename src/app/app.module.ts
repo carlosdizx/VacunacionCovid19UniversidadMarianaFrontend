@@ -14,6 +14,7 @@ import { ListadoPosibleAsistenciaComponent } from './personas/listado-posible-as
 import { ListadoPosiblesFacultadesComponent } from './personas/listado-posibles-facultades/listado-posibles-facultades.component';
 import { UnoComponent } from './graficas/uno/uno.component';
 import {ChartsModule} from 'ng2-charts';
+import { DosComponent } from './graficas/dos/dos.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'listado/posibles', component: ListadoPosibleAsistenciaComponent },
   { path: 'listado/posiblesFacultades', component: ListadoPosiblesFacultadesComponent },
   { path: 'graficas/1', component: UnoComponent },
+  { path: 'graficas/2', component: DosComponent },
 ];
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ const routes: Routes = [
     ListadoPosibleAsistenciaComponent,
     ListadoPosiblesFacultadesComponent,
     UnoComponent,
+    DosComponent,
   ],
   imports: [
     BrowserModule,
