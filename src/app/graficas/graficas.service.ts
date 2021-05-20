@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class GraficasService {
 
-  private urlEndpoint = 'http://localhost:8080/personas/graficas';
+  private urlEndpoint = 'https://trazabilidad-umariana-covid19.herokuapp.com/personas/graficas';
 
   constructor(private http: HttpClient, private router: Router) {  }
 

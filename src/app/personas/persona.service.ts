@@ -14,7 +14,7 @@ export class PersonaService {
 
   // private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   //                     http://localhost:8080/personas/tipos/1
-  private urlEndpoint = 'http://localhost:8080/personas';
+  private urlEndpoint = 'https://trazabilidad-umariana-covid19.herokuapp.com/personas';
 
   constructor(private http: HttpClient, private router: Router) {  }
 
