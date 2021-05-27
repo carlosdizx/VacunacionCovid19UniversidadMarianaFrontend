@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonaSencilla} from '../PersonaSencilla';
 import {PersonaService} from '../persona.service';
-import {ResumenFacultad} from '../resumenFacultad';
+import {abstractFacuTipo, Resumen} from '../Resumen';
 
 @Component({
   selector: 'app-listado-posibles-facultades',
@@ -11,7 +10,9 @@ import {ResumenFacultad} from '../resumenFacultad';
 export class ListadoPosiblesFacultadesComponent implements OnInit {
 
 
-  listado: ResumenFacultad[] = [];
+  listado: Resumen[] = [];
+
+  facutipos: abstractFacuTipo[] = [];
 
   titulo = 'Listado de estudiantes';
 
@@ -26,9 +27,11 @@ export class ListadoPosiblesFacultadesComponent implements OnInit {
   getByFacultadPersonasPosibles(): void {
     this.service.getByFacultadPersonasPosibles().subscribe(listado => {
       this.listado = listado.Lista;
-      for (const r of this.listado){
-        this.total += r.cantidad;
-      }
+      this.listado.forEach(elent => {
+        const datos = elent.etiqueta.split('-');
+        this.facutipos.push(new abstractFacuTipo(elent.cantidad,datos[0],datos[1]));
+        this.total += elent.cantidad;
+      })
     } );
   }
 }

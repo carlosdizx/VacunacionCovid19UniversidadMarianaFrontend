@@ -13,7 +13,7 @@ import {PersonaSencilla} from '../PersonaSencilla';
 })
 export class PersonasListadoComponent implements OnInit {
 
-  personas: PersonaSencilla[];
+  personas: PersonaSencilla[] = [];
 
   mostrar = true;
 

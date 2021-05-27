@@ -3,22 +3,15 @@
   <thead>
   <tr>
     <th>Cantidad</th>
-    <th>Rol/cargo</th>
-    <th>Programa acedemico</th>
+    <th>Tipo</th>
     <th>Facultad</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let resumen of listado">
-    <td>{{resumen.cantidad}}</td>
-    <td>{{resumen.tipo}}</td>
-    <td>{{resumen.programa}}</td>
-    <td *ngIf="resumen.facultad==='Administrativa'" class="btn-warning">{{resumen.facultad}}</td>
-    <td *ngIf="resumen.facultad==='Ciencias contables, Economicas y financieras'" class="btn-primary">{{resumen.facultad}}</td>
-    <td *ngIf="resumen.facultad==='Educación'" class="btn-light">{{resumen.facultad}}</td>
-    <td *ngIf="resumen.facultad==='Ingeniería'" class="btn-danger">{{resumen.facultad}}</td>
-    <td *ngIf="resumen.facultad==='Humanidades y Ciencias y Sociales'" class="btn-secondary">{{resumen.facultad}}</td>
-    <td *ngIf="resumen.facultad==='Ciencias de la Salud'" class="btn-success">{{resumen.facultad}}</td>
+  <tr *ngFor="let facuTipo of facutipos">
+    <td>{{facuTipo.cantidad}}</td>
+    <td>{{facuTipo.tipo}}</td>
+    <td>{{facuTipo.facultad}}</td>
   </tr>
   </tbody>
 </table>

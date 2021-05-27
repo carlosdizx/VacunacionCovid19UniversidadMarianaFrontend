@@ -14,18 +14,18 @@ export class PersonaService {
 
   // private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   //                     http://localhost:8080/personas/tipos/1
-  private urlEndpoint = 'https://trazabilidad-umariana-covid19.herokuapp.com/personas';
+  private urlEndpoint = 'http://localhost:8080/personas';
 
   constructor(private http: HttpClient, private router: Router) {  }
 
   getListado(): Observable<PersonaSencilla[]>{
     return this.http
-      .get<PersonaSencilla[]>(`${this.urlEndpoint}/all`);
+      .get<PersonaSencilla[]>(`${this.urlEndpoint}/all/estadoPrograma`);
   }
 
   getListado2(): Observable<PersonaSencilla[]>{
     return this.http
-      .get<PersonaSencilla[]>(`${this.urlEndpoint}/2all`);
+      .get<PersonaSencilla[]>(`${this.urlEndpoint}/all/tipoEstado`);
   }
 
   getPersona(documento: number): Observable<any> {

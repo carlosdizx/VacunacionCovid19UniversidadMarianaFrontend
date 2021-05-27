@@ -21,7 +21,14 @@ export class ListadoPosibleAsistenciaComponent implements OnInit {
 
   getPersoonasPosibleAsistencia(): void{
     this.service.getPersoonasPosibleAsistencia().subscribe(
-      listado => this.personas = listado.Lista
+       respuesta => {
+         if (respuesta.Mensaje){
+           this.titulo = respuesta.Mensaje;
+         }
+         else{
+           this.personas = respuesta.Lista;
+         }
+       }
     );
   }
 
