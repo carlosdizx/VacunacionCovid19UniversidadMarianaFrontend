@@ -11,7 +11,12 @@
   <tr *ngFor="let facuTipo of facutipos">
     <td>{{facuTipo.cantidad}}</td>
     <td>{{facuTipo.tipo}}</td>
-    <td>{{facuTipo.facultad}}</td>
+    <td class="btn-primary" *ngIf="facuTipo.facultad==='Administrativa'">{{facuTipo.facultad}}</td>
+    <td class="btn-warning" *ngIf="facuTipo.facultad==='Ciencias contables, Economicas y financieras'">{{facuTipo.facultad}}</td>
+    <td class="btn-success" *ngIf="facuTipo.facultad==='Ciencias de la Salud'">{{facuTipo.facultad}}</td>
+    <td class="btn-secondary" *ngIf="facuTipo.facultad==='Educación'">{{facuTipo.facultad}}</td>
+    <td class="btn-danger" *ngIf="facuTipo.facultad==='Ingeniería'">{{facuTipo.facultad}}</td>
+    <td class="btn-light" *ngIf="facuTipo.facultad==='Humanidades y Ciencias y Sociales'">{{facuTipo.facultad}}</td>
   </tr>
   </tbody>
 </table>
