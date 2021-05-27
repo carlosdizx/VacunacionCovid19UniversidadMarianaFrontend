@@ -1,4 +1,5 @@
 # VacunacionCovid19UniversidadMarianaFrontend
+Si se desea correrlo en un computador cambiar en el package.json en scripts '"start": "ng serve"' para ejecutar en la maquina
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
 
