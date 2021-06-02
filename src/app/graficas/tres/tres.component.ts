@@ -1,70 +1,61 @@
 import { Component, OnInit } from '@angular/core';
-import {GraficaUno, InfoUno} from '../graficaUno';
-import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
-import {Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip} from 'ng2-charts';
-import {GraficasService} from '../graficas.service';
-import {GraficaTres} from '../graficaTres';
+import { GraficaUno, InfoUno } from '../graficaUno';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
+import { GraficasService } from '../graficas.service';
+import { GraficaTres } from '../graficaTres';
+import { Resumen } from '../../personas/Resumen';
 
 @Component({
-  selector: 'app-tres',
-  templateUrl: './tres.component.html',
-  styleUrls: []
+	selector: 'app-tres',
+	templateUrl: './tres.component.html',
+	styleUrls: [],
 })
 export class TresComponent implements OnInit {
+	resumen: Resumen[] = [];
 
-  graficoTres: GraficaTres;
+	titulo = 'Personas categorizadas por facultades, ademas, que pueden asistir a la Universidad (cuentan con primera dosis o ya estan vacunados)';
 
-  infoUno: InfoUno[] =[];
+	barChartOptions: ChartOptions = {
+		responsive: true,
+	};
 
-  titulo: string;
+	public barChartLabels: Label[] = ['Tipo, cargos rol'];
+	public barChartType: ChartType = 'bar';
+	public barChartLegend = true;
+	public barChartPlugins = [];
 
-  barChartOptions: ChartOptions = {
-    responsive: true,
-  };
+	public barChartData: ChartDataSets[] = [
+		{
+			label: 'desde 0',
+			data: [0],
+			backgroundColor: '',
+			hoverBackgroundColor: '',
+		},
+	];
 
-  public barChartLabels: Label[] = ['Cantiadad de posibles asistentes por facultad'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
+	private colores: string[] = ['PINK', 'RED', 'YELLOW', 'ORANGE', 'BLUE', 'GREEN'];
 
-  public barChartData: ChartDataSets[] = [];
+	constructor(private service: GraficasService) {}
 
-  constructor(private service: GraficasService) { }
+	ngOnInit(): void {
+		this.getGraficaTres();
+		monkeyPatchChartJsTooltip();
+		monkeyPatchChartJsLegend();
+	}
 
-  ngOnInit(): void {
-    this.getGraficaUno();
-    monkeyPatchChartJsTooltip();
-    monkeyPatchChartJsLegend();
-  }
-
-  getGraficaUno(): void {
-    this.service.getGraficaTres().subscribe(respuesta => {
-      this.graficoTres = respuesta;
-      this.infoUno.push({
-        label: 'Educación',
-        data: [this.graficoTres.Educación],
-        backgroundColor: 'RED',
-        hoverBackgroundColor: 'RED'
-      });
-      this.infoUno.push({
-        label: 'HumanidadesSociales',
-        data: [this.graficoTres.HumanidadesSociales],
-        backgroundColor: 'GREEN',
-        hoverBackgroundColor: 'GREEN'
-      });
-      this.infoUno.push({label: 'Salud', data: [this.graficoTres.Salud], backgroundColor: 'BLUE', hoverBackgroundColor: 'BLUE'});
-      this.infoUno.push({
-        label: 'Ingeniería',
-        data: [this.graficoTres.Ingeniería],
-        backgroundColor: 'ORANGE',
-        hoverBackgroundColor: 'ORANGE'
-      });
-      this.infoUno.push({label: 'ContablesEconomicasFinancieras', data: [this.graficoTres.ContablesEconomicasFinancieras], backgroundColor: 'WHITE', hoverBackgroundColor: 'WHITE'});
-      this.infoUno.push({label: 'Administración', data: [this.graficoTres.Administración], backgroundColor: 'BROWN', hoverBackgroundColor: 'BROWN'});
-      this.infoUno.push({label: '', data: [0], backgroundColor: '', hoverBackgroundColor: ''},);
-      this.infoUno.forEach(dato => this.barChartData.push(dato));
-      this.barChartData.splice(0,1)
-      this.titulo = respuesta.Total+' - 100%';
-    });
-    }
+	getGraficaTres(): void {
+		this.service.getGraficaTres().subscribe((respuesta) => {
+			this.resumen = respuesta.Resumen;
+			this.resumen.forEach((item, index) => {
+				console.log(index + 1 + '-' + item.etiqueta);
+				this.barChartData.push({
+					label: item.etiqueta,
+					data: [item.cantidad],
+					backgroundColor: this.colores[index],
+					hoverBackgroundColor: this.colores[index],
+				});
+			});
+		});
+	}
 }

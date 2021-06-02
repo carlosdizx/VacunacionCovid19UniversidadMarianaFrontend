@@ -1,68 +1,61 @@
 import { Component, OnInit } from '@angular/core';
-import {InfoUno} from '../graficaUno';
-import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
-import {Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip} from 'ng2-charts';
-import {GraficasService} from '../graficas.service';
-import {GraficaDos} from '../graficaDos';
+import { InfoUno } from '../graficaUno';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
+import { GraficasService } from '../graficas.service';
+import { GraficaDos } from '../graficaDos';
+import { Resumen } from '../../personas/Resumen';
 
 @Component({
-  selector: 'app-dos',
-  templateUrl: './dos.component.html',
-  styleUrls: []
+	selector: 'app-dos',
+	templateUrl: './dos.component.html',
+	styleUrls: [],
 })
 export class DosComponent implements OnInit {
+	resumen: Resumen[] = [];
 
-  graficoDos: GraficaDos;
+	titulo = 'Personas clasificadas por situacion en la que se encuetre';
 
-  infoUno: InfoUno[] =[];
+	barChartOptions: ChartOptions = {
+		responsive: true,
+	};
 
-  titulo = '';
+	public barChartLabels: Label[] = ['Tipo, cargos rol'];
+	public barChartType: ChartType = 'bar';
+	public barChartLegend = true;
+	public barChartPlugins = [];
 
-  barChartOptions: ChartOptions = {
-    responsive: true,
-    scales: { xAxes: [{}], yAxes: [{}] },
-  };
+	public barChartData: ChartDataSets[] = [
+		{
+			label: 'desde 0',
+			data: [0],
+			backgroundColor: '',
+			hoverBackgroundColor: '',
+		},
+	];
 
-  public barChartLabels: Label[] = ['Estados / Situacion de las personas'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
+	private colores: string[] = ['PINK', 'RED', 'YELLOW', 'ORANGE', 'BLUE', 'GREEN'];
 
-  public barChartData: ChartDataSets[] = [];
+	constructor(private service: GraficasService) {}
 
-  constructor(private service: GraficasService) { }
+	ngOnInit(): void {
+		this.getGraficaDos();
+		monkeyPatchChartJsTooltip();
+		monkeyPatchChartJsLegend();
+	}
 
-  ngOnInit(): void {
-    this.getGraficaDos();
-    monkeyPatchChartJsTooltip();
-    monkeyPatchChartJsLegend();
-  }
-
-  getGraficaDos(): void {
-    this.service.getGraficaDos().subscribe(respuesta =>{
-      this.graficoDos = respuesta;
-      this.infoUno = [{label: 'Desconocidos', data: [this.graficoDos.Desconocidos],backgroundColor: 'VIOLET', hoverBackgroundColor: 'VIOLET'}];
-      this.infoUno.push({label: 'Contagiados', data: [this.graficoDos.Contagiados],backgroundColor: 'RED', hoverBackgroundColor: 'RED'});
-      this.infoUno.push({label: 'Saludables', data: [this.graficoDos.Saludables],backgroundColor: 'YELLOW', hoverBackgroundColor: 'YELLOW'});
-      this.infoUno.push({label: 'PreContagiados', data: [this.graficoDos.PreContagiados],backgroundColor: 'ORANGE', hoverBackgroundColor: 'ORANGE'});
-      this.infoUno.push({label: 'PreVacunados', data: [this.graficoDos.PreVacunados],backgroundColor: 'BLUE', hoverBackgroundColor: 'BLUE'});
-      this.infoUno.push({label: 'Vacunados', data: [this.graficoDos.Vacunados],backgroundColor: 'GREEN', hoverBackgroundColor: 'GREEN'});
-      this.infoUno.push({label: '', data: [0],backgroundColor: '', hoverBackgroundColor: ''},);
-      let total = 0;
-      this.infoUno.forEach(numero => numero.data.forEach(iten => {
-        return total += iten;
-      }))
-      this.infoUno = [{label: 'Desconocidos '+((Math.floor(this.graficoDos.Desconocidos*100)/total)).toFixed(2)+'%', data: [this.graficoDos.Desconocidos],backgroundColor: 'VIOLET', hoverBackgroundColor: 'VIOLET'}];
-      this.infoUno.push({label: 'Contagiados '+(Math.floor(this.graficoDos.Contagiados*100)/total).toFixed(2)+'%', data: [this.graficoDos.Contagiados],backgroundColor: 'RED', hoverBackgroundColor: 'RED'});
-      this.infoUno.push({label: 'Saludables '+(Math.floor(this.graficoDos.Saludables*100)/total).toFixed(2)+'%', data: [this.graficoDos.Saludables],backgroundColor: 'YELLOW', hoverBackgroundColor: 'YELLOW'});
-      this.infoUno.push({label: 'PreContagiados '+(Math.floor(this.graficoDos.PreContagiados*100)/total).toFixed(2)+'%', data: [this.graficoDos.PreContagiados],backgroundColor: 'ORANGE', hoverBackgroundColor: 'ORANGE'});
-      this.infoUno.push({label: 'PreVacunados '+(Math.floor(this.graficoDos.PreVacunados*100)/total).toFixed(2)+'%', data: [this.graficoDos.PreVacunados],backgroundColor: 'BLUE', hoverBackgroundColor: 'BLUE'});
-      this.infoUno.push({label: 'Vacunados '+(Math.floor(this.graficoDos.Vacunados*100)/total).toFixed(2)+'%', data: [this.graficoDos.Vacunados],backgroundColor: 'GREEN', hoverBackgroundColor: 'GREEN'});
-      this.infoUno.push({label: '', data: [0],backgroundColor: '', hoverBackgroundColor: ''},);
-      this.titulo = 'Total personas: ('+total+' - 100%)';
-      this.infoUno.forEach(dato => this.barChartData.push(dato));
-      this.barChartData.splice(0,1);
-    });
-  }
-
+	getGraficaDos(): void {
+		this.service.getGraficaDos().subscribe((respuesta) => {
+			this.resumen = respuesta.Resumen;
+			this.resumen.forEach((item, index) => {
+				console.log(index + 1 + '-' + item.etiqueta);
+				this.barChartData.push({
+					label: item.etiqueta,
+					data: [item.cantidad],
+					backgroundColor: this.colores[index],
+					hoverBackgroundColor: this.colores[index],
+				});
+			});
+		});
+	}
 }
