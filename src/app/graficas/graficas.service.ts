@@ -8,23 +8,23 @@ import {Observable} from 'rxjs';
 })
 export class GraficasService {
 
-  private urlEndpoint = 'https://trazabilidad-umariana-covid19.herokuapp.com/personas/graficas';
+  private urlEndpoint = 'http://localhost:8080/personas/graficas/';
 
   constructor(private http: HttpClient, private router: Router) {  }
 
   getGraficaUno(): Observable<any> {
-    return this.http.get(`${this.urlEndpoint}/1`);
+    return this.http.get(`${this.urlEndpoint}1`);
   }
 
   getGraficaDos(): Observable<any> {
-    return this.http.get(`${this.urlEndpoint}/2`);
+    return this.http.get(`${this.urlEndpoint}2`);
   }
 
   getGraficaTres(): Observable<any> {
-    return this.http.get(`${this.urlEndpoint}/3`);
+    return this.http.get(`${this.urlEndpoint}3`);
   }
 
   getGraficaCuatro(): Observable<any> {
-    return this.http.get(`${this.urlEndpoint}/4`);
+    return this.http.get(`${this.urlEndpoint}4`);
   }
 }
