@@ -3,7 +3,6 @@ import { GraficaUno, InfoUno } from '../graficaUno';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
 import { GraficasService } from '../graficas.service';
-import { GraficaTres } from '../graficaTres';
 import { Resumen } from '../../personas/Resumen';
 
 @Component({
