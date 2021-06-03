@@ -1,96 +1,212 @@
-<button class="btn btn-dark btn-block"><b>{{titulo}}</b></button>
+<button class="btn btn-dark btn-block"
+	><b>{{ titulo }}</b></button
+>
 <div class="form-group row">
-  <div class="col-sm-2">
-    <button (click)="cambiarTitulo(1)" class="btn btn-secondary btn-block" [routerLink]="['/listado/estado/',1]">Desconocidos ({{desconocidos.length}})</button>
-  </div>
-  <div class="col-sm-2">
-    <button (click)="cambiarTitulo(2)" class="btn btn-danger btn-block" [routerLink]="['/listado/estado/',2]">Contagiados({{contagiados.length}})</button>
-  </div>
-  <div class="col-sm-2">
-    <button (click)="cambiarTitulo(3)" class="btn btn-warning btn-block" [routerLink]="['/listado/estado/',3]">Saludables({{saludables.length}})</button>
-  </div>
-  <div class="col-sm-2">
-    <button (click)="cambiarTitulo(4)" class="btn btn-warning btn-block" [routerLink]="['/listado/estado/',4]">Anteriormente con covid({{preContagiados.length}})</button>
-  </div>
-  <div class="col-sm-2">
-    <button (click)="cambiarTitulo(5)" class="btn btn-primary btn-block" [routerLink]="['/listado/estado/',5]">Vacunados con primera dosis({{preVacunados.length}})</button>
-  </div>
-  <div class="col-sm-2">
-    <button (click)="cambiarTitulo(6)" class="btn btn-success btn-block" [routerLink]="['/listado/estado/',6]">Vacunados, dos dosis({{vacunados.length}})</button>
-  </div>
+	<div class="col-sm-2">
+		<button
+			(click)="cambiarTitulo(1)"
+			class="btn btn-secondary btn-block"
+			[routerLink]="['/listado/estado/', 1]"
+			>Desconocidos ({{ desconocidos.length }})</button
+		>
+	</div>
+	<div class="col-sm-2">
+		<button
+			(click)="cambiarTitulo(2)"
+			class="btn btn-danger btn-block"
+			[routerLink]="['/listado/estado/', 2]"
+			>Contagiados({{ contagiados.length }})</button
+		>
+	</div>
+	<div class="col-sm-2">
+		<button
+			(click)="cambiarTitulo(3)"
+			class="btn btn-warning btn-block"
+			[routerLink]="['/listado/estado/', 3]"
+			>Saludables({{ saludables.length }})</button
+		>
+	</div>
+	<div class="col-sm-2">
+		<button
+			(click)="cambiarTitulo(4)"
+			class="btn btn-warning btn-block"
+			[routerLink]="['/listado/estado/', 4]"
+			>Anteriormente con covid({{ preContagiados.length }})</button
+		>
+	</div>
+	<div class="col-sm-2">
+		<button
+			(click)="cambiarTitulo(5)"
+			class="btn btn-primary btn-block"
+			[routerLink]="['/listado/estado/', 5]"
+			>Vacunados con primera dosis({{ preVacunados.length }})</button
+		>
+	</div>
+	<div class="col-sm-2">
+		<button
+			(click)="cambiarTitulo(6)"
+			class="btn btn-success btn-block"
+			[routerLink]="['/listado/estado/', 6]"
+			>Vacunados, dos dosis({{ vacunados.length }})</button
+		>
+	</div>
 </div>
-<table class="container-fluid table table-dark table-striped">
-  <thead>
-  <tr>
-    <th>Documento</th>
-    <th>Programa acedemico</th>
-    <th>Tipo</th>
-  </tr>
-  </thead>
-  <!-- desconocidos ( indice = 1 ) -->
-  <tbody *ngIf="indice===1">
-  <tr *ngFor="let desconocido of desconocidos">
-    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',desconocido.documento]">{{desconocido.documento}}</button></td>
-    <td>{{desconocido.programa.nombre}}</td>
-    <td *ngIf="desconocido.tipo.id===1" class="btn-primary">{{desconocido.tipo.nombre}}</td>
-    <td *ngIf="desconocido.tipo.id===2" class="btn-success">{{desconocido.tipo.nombre}}</td>
-    <td *ngIf="desconocido.tipo.id===3" class="btn-warning">{{desconocido.tipo.nombre}}</td>
-    <td *ngIf="desconocido.tipo.id===4" class="btn-danger">{{desconocido.tipo.nombre}}</td>
-  </tr>
-  </tbody>
-  <!-- contagiados ( indice = 2 ) -->
-  <tbody *ngIf="indice===2">
-  <tr *ngFor="let contagiado of contagiados">
-    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',contagiado.documento]">{{contagiado.documento}}</button></td>
-    <td>{{contagiado.programa.nombre}}</td>
-    <td *ngIf="contagiado.tipo.id===1" class="btn-primary">{{contagiado.tipo.nombre}}</td>
-    <td *ngIf="contagiado.tipo.id===2" class="btn-success">{{contagiado.tipo.nombre}}</td>
-    <td *ngIf="contagiado.tipo.id===3" class="btn-warning">{{contagiado.tipo.nombre}}</td>
-    <td *ngIf="contagiado.tipo.id===4" class="btn-danger">{{contagiado.tipo.nombre}}</td>
-  </tr>
-  </tbody>
-  <!-- saludables ( indice = 3 ) -->
-  <tbody *ngIf="indice===3">
-  <tr *ngFor="let saludable of saludables">
-    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',saludable.documento]">{{saludable.documento}}</button></td>
-    <td>{{saludable.programa.nombre}}</td>
-    <td *ngIf="saludable.tipo.id===1" class="btn-primary">{{saludable.tipo.nombre}}</td>
-    <td *ngIf="saludable.tipo.id===2" class="btn-success">{{saludable.tipo.nombre}}</td>
-    <td *ngIf="saludable.tipo.id===3" class="btn-warning">{{saludable.tipo.nombre}}</td>
-    <td *ngIf="saludable.tipo.id===4" class="btn-danger">{{saludable.tipo.nombre}}</td>
-  </tr>
-  </tbody>
-  <!-- preContagiados ( indice = 4 ) -->
-  <tbody *ngIf="indice===4">
-  <tr *ngFor="let preContagiado of preContagiados">
-    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',preContagiado.documento]">{{preContagiado.documento}}</button></td>
-    <td>{{preContagiado.programa.nombre}}</td>
-    <td *ngIf="preContagiado.tipo.id===1" class="btn-primary">{{preContagiado.tipo.nombre}}</td>
-    <td *ngIf="preContagiado.tipo.id===2" class="btn-success">{{preContagiado.tipo.nombre}}</td>
-    <td *ngIf="preContagiado.tipo.id===3" class="btn-warning">{{preContagiado.tipo.nombre}}</td>
-    <td *ngIf="preContagiado.tipo.id===4" class="btn-danger">{{preContagiado.tipo.nombre}}</td>
-  </tr>
-  </tbody>
-  <!-- preVacunados ( indice = 5 ) -->
-  <tbody *ngIf="indice===5">
-  <tr *ngFor="let preVacunados of preVacunados">
-    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',preVacunados.documento]">{{preVacunados.documento}}</button></td>
-    <td>{{preVacunados.programa.nombre}}</td>
-    <td *ngIf="preVacunados.tipo.id===1" class="btn-primary">{{preVacunados.tipo.nombre}}</td>
-    <td *ngIf="preVacunados.tipo.id===2" class="btn-success">{{preVacunados.tipo.nombre}}</td>
-    <td *ngIf="preVacunados.tipo.id===3" class="btn-warning">{{preVacunados.tipo.nombre}}</td>
-    <td *ngIf="preVacunados.tipo.id===4" class="btn-danger">{{preVacunados.tipo.nombre}}</td>
-  </tr>
-  </tbody>
-  <!-- vacunados ( indice = 6 ) -->
-  <tbody *ngIf="indice===6">
-  <tr *ngFor="let vacunados of vacunados">
-    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',vacunados.documento]">{{vacunados.documento}}</button></td>
-    <td>{{vacunados.programa.nombre}}</td>
-    <td *ngIf="vacunados.tipo.id===1" class="btn-primary">{{vacunados.tipo.nombre}}</td>
-    <td *ngIf="vacunados.tipo.id===2" class="btn-success">{{vacunados.tipo.nombre}}</td>
-    <td *ngIf="vacunados.tipo.id===3" class="btn-warning">{{vacunados.tipo.nombre}}</td>
-    <td *ngIf="vacunados.tipo.id===4" class="btn-danger">{{vacunados.tipo.nombre}}</td>
-  </tr>
-  </tbody>
+<table class="table-responsive-xl table table-dark table-striped">
+	<thead>
+		<tr>
+			<th>Documento</th>
+			<th>Programa acedemico</th>
+			<th>Tipo</th>
+		</tr>
+	</thead>
+	<!-- desconocidos ( indice = 1 ) -->
+	<tbody *ngIf="indice === 1">
+		<tr *ngFor="let desconocido of desconocidos">
+			<td
+				><button
+					class="btn btn-secondary btn-block"
+					[routerLink]="['/personas/', desconocido.documento]"
+					>{{ desconocido.documento }}</button
+				></td
+			>
+			<td>{{ desconocido.programa.nombre }}</td>
+			<td *ngIf="desconocido.tipo.id === 1" class="btn-primary">{{
+				desconocido.tipo.nombre
+			}}</td>
+			<td *ngIf="desconocido.tipo.id === 2" class="btn-success">{{
+				desconocido.tipo.nombre
+			}}</td>
+			<td *ngIf="desconocido.tipo.id === 3" class="btn-warning">{{
+				desconocido.tipo.nombre
+			}}</td>
+			<td *ngIf="desconocido.tipo.id === 4" class="btn-danger">{{
+				desconocido.tipo.nombre
+			}}</td>
+		</tr>
+	</tbody>
+	<!-- contagiados ( indice = 2 ) -->
+	<tbody *ngIf="indice === 2">
+		<tr *ngFor="let contagiado of contagiados">
+			<td
+				><button
+					class="btn btn-secondary btn-block"
+					[routerLink]="['/personas/', contagiado.documento]"
+					>{{ contagiado.documento }}</button
+				></td
+			>
+			<td>{{ contagiado.programa.nombre }}</td>
+			<td *ngIf="contagiado.tipo.id === 1" class="btn-primary">{{
+				contagiado.tipo.nombre
+			}}</td>
+			<td *ngIf="contagiado.tipo.id === 2" class="btn-success">{{
+				contagiado.tipo.nombre
+			}}</td>
+			<td *ngIf="contagiado.tipo.id === 3" class="btn-warning">{{
+				contagiado.tipo.nombre
+			}}</td>
+			<td *ngIf="contagiado.tipo.id === 4" class="btn-danger">{{
+				contagiado.tipo.nombre
+			}}</td>
+		</tr>
+	</tbody>
+	<!-- saludables ( indice = 3 ) -->
+	<tbody *ngIf="indice === 3">
+		<tr *ngFor="let saludable of saludables">
+			<td
+				><button
+					class="btn btn-secondary btn-block"
+					[routerLink]="['/personas/', saludable.documento]"
+					>{{ saludable.documento }}</button
+				></td
+			>
+			<td>{{ saludable.programa.nombre }}</td>
+			<td *ngIf="saludable.tipo.id === 1" class="btn-primary">{{
+				saludable.tipo.nombre
+			}}</td>
+			<td *ngIf="saludable.tipo.id === 2" class="btn-success">{{
+				saludable.tipo.nombre
+			}}</td>
+			<td *ngIf="saludable.tipo.id === 3" class="btn-warning">{{
+				saludable.tipo.nombre
+			}}</td>
+			<td *ngIf="saludable.tipo.id === 4" class="btn-danger">{{
+				saludable.tipo.nombre
+			}}</td>
+		</tr>
+	</tbody>
+	<!-- preContagiados ( indice = 4 ) -->
+	<tbody *ngIf="indice === 4">
+		<tr *ngFor="let preContagiado of preContagiados">
+			<td
+				><button
+					class="btn btn-secondary btn-block"
+					[routerLink]="['/personas/', preContagiado.documento]"
+					>{{ preContagiado.documento }}</button
+				></td
+			>
+			<td>{{ preContagiado.programa.nombre }}</td>
+			<td *ngIf="preContagiado.tipo.id === 1" class="btn-primary">{{
+				preContagiado.tipo.nombre
+			}}</td>
+			<td *ngIf="preContagiado.tipo.id === 2" class="btn-success">{{
+				preContagiado.tipo.nombre
+			}}</td>
+			<td *ngIf="preContagiado.tipo.id === 3" class="btn-warning">{{
+				preContagiado.tipo.nombre
+			}}</td>
+			<td *ngIf="preContagiado.tipo.id === 4" class="btn-danger">{{
+				preContagiado.tipo.nombre
+			}}</td>
+		</tr>
+	</tbody>
+	<!-- preVacunados ( indice = 5 ) -->
+	<tbody *ngIf="indice === 5">
+		<tr *ngFor="let preVacunados of preVacunados">
+			<td
+				><button
+					class="btn btn-secondary btn-block"
+					[routerLink]="['/personas/', preVacunados.documento]"
+					>{{ preVacunados.documento }}</button
+				></td
+			>
+			<td>{{ preVacunados.programa.nombre }}</td>
+			<td *ngIf="preVacunados.tipo.id === 1" class="btn-primary">{{
+				preVacunados.tipo.nombre
+			}}</td>
+			<td *ngIf="preVacunados.tipo.id === 2" class="btn-success">{{
+				preVacunados.tipo.nombre
+			}}</td>
+			<td *ngIf="preVacunados.tipo.id === 3" class="btn-warning">{{
+				preVacunados.tipo.nombre
+			}}</td>
+			<td *ngIf="preVacunados.tipo.id === 4" class="btn-danger">{{
+				preVacunados.tipo.nombre
+			}}</td>
+		</tr>
+	</tbody>
+	<!-- vacunados ( indice = 6 ) -->
+	<tbody *ngIf="indice === 6">
+		<tr *ngFor="let vacunados of vacunados">
+			<td
+				><button
+					class="btn btn-secondary btn-block"
+					[routerLink]="['/personas/', vacunados.documento]"
+					>{{ vacunados.documento }}</button
+				></td
+			>
+			<td>{{ vacunados.programa.nombre }}</td>
+			<td *ngIf="vacunados.tipo.id === 1" class="btn-primary">{{
+				vacunados.tipo.nombre
+			}}</td>
+			<td *ngIf="vacunados.tipo.id === 2" class="btn-success">{{
+				vacunados.tipo.nombre
+			}}</td>
+			<td *ngIf="vacunados.tipo.id === 3" class="btn-warning">{{
+				vacunados.tipo.nombre
+			}}</td>
+			<td *ngIf="vacunados.tipo.id === 4" class="btn-danger">{{
+				vacunados.tipo.nombre
+			}}</td>
+		</tr>
+	</tbody>
 </table>

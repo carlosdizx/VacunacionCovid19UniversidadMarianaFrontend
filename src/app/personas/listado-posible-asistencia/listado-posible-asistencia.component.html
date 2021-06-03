@@ -1,22 +1,28 @@
-<button class="btn btn-primary btn-block">{{titulo}} ({{personas.length}})</button>
-<table class="container-fluid table table-dark table-striped text-monospace">
-  <thead>
-  <tr>
-    <th>Documento</th>
-    <th>Estado</th>
-    <th>Programa acedemico</th>
-    <th>Tipo/Rol</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let persona of personas">
-    <td><button class="btn btn-secondary btn-block"[routerLink]="['/personas/',persona.documento]">{{persona.documento}}</button></td>
-    <td>{{persona.estado.nombre}}</td>
-    <td>{{persona.programa.nombre}}</td>
-    <td *ngIf="persona.tipo.id===1" class="btn-primary">{{persona.tipo.nombre}}</td>
-    <td *ngIf="persona.tipo.id===2" class="btn-success">{{persona.tipo.nombre}}</td>
-    <td *ngIf="persona.tipo.id===3" class="btn-warning">{{persona.tipo.nombre}}</td>
-    <td *ngIf="persona.tipo.id===4" class="btn-danger">{{persona.tipo.nombre}}</td>
-  </tr>
-  </tbody>
+<button class="btn btn-primary btn-block">{{ titulo }} ({{ personas.length }})</button>
+<table class="table-responsive-xl table table-dark table-striped text-monospace">
+	<thead>
+		<tr>
+			<th>Documento</th>
+			<th>Estado</th>
+			<th>Programa acedemico</th>
+			<th>Tipo/Rol</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let persona of personas">
+			<td
+				><button
+					class="btn btn-secondary btn-block"
+					[routerLink]="['/personas/', persona.documento]"
+					>{{ persona.documento }}</button
+				></td
+			>
+			<td>{{ persona.estado.nombre }}</td>
+			<td>{{ persona.programa.nombre }}</td>
+			<td *ngIf="persona.tipo.id === 1" class="btn-primary">{{ persona.tipo.nombre }}</td>
+			<td *ngIf="persona.tipo.id === 2" class="btn-success">{{ persona.tipo.nombre }}</td>
+			<td *ngIf="persona.tipo.id === 3" class="btn-warning">{{ persona.tipo.nombre }}</td>
+			<td *ngIf="persona.tipo.id === 4" class="btn-danger">{{ persona.tipo.nombre }}</td>
+		</tr>
+	</tbody>
 </table>
