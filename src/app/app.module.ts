@@ -18,7 +18,7 @@ import { DosComponent } from './graficas/dos/dos.component';
 import { TresComponent } from './graficas/tres/tres.component';
 import { CuatroComponent } from './graficas/cuatro/cuatro.component';
 import { BioComponent } from './bio/bio.component';
-import {FooterComponent} from './footer/footer.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/bio', pathMatch: 'full' },
@@ -37,7 +37,6 @@ const routes: Routes = [
 @NgModule({
 	declarations: [
 		AppComponent,
-		HeaderComponent,
 		PersonasListadoComponent,
 		FormPersonaComponent,
 		ListadoTipoComponent,
@@ -49,7 +48,8 @@ const routes: Routes = [
 		TresComponent,
 		CuatroComponent,
 		BioComponent,
-    FooterComponent,
+		FooterComponent,
+		HeaderComponent,
 	],
 	imports: [
 		BrowserModule,

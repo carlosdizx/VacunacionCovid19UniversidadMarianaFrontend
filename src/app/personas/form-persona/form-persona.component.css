@@ -8,4 +8,12 @@
 }
 .card {
 	height: 100%;
+  padding-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  #contenedora {
+    padding-top: 40%;
+    position: center;
+  }
 }

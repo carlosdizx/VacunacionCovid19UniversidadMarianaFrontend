@@ -1,3 +1,10 @@
 #contenedora {
 	padding-top: 10%;
+	position: center;
+}
+@media only screen and (max-width: 600px) {
+	#contenedora {
+		padding-top: 40%;
+		position: center;
+	}
 }
