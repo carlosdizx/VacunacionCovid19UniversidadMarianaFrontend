@@ -1,12 +1,11 @@
-.form-control{
-  margin-top: 50px;
-  font-size: 17px;
+.form-control {
+	margin-top: 50px;
+	font-size: 17px;
 }
-.col-form-label{
-  font-size: 20px;
-  margin-top: 50px;
+.col-form-label {
+	font-size: 20px;
+	margin-top: 50px;
 }
-.card{
-  position: absolute;
-  height: 100%;
+.card {
+	height: 100%;
 }
